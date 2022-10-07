@@ -4,7 +4,7 @@ import boto3
 from io import StringIO
 import json
 
-class S3_execution_class:
+class aws_execution_class:
     
     def pull_S3_files(self, bucket_name, file_name):
 
