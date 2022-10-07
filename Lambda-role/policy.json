@@ -1,0 +1,161 @@
+{
+  "sdkResponseMetadata": null,
+  "sdkHttpMetadata": null,
+  "partial": false,
+  "permissionsBoundary": null,
+  "policies": [
+    {
+      "arn": null,
+      "document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+              "s3:PutObject",
+              "s3:GetObject"
+            ],
+            "Resource": "arn:aws:s3:::<Bucket name here>/<Obeject name here>"
+          }
+        ]
+      },
+      "id": null,
+      "name": <policy name here>,
+      "type": "inline"
+    },
+    {
+      "arn": null,
+      "document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": "secretsmanager:GetSecretValue",
+            "Resource": "arn:aws:secretsmanager:<Secret ARN here>"
+          }
+        ]
+      },
+      "id": null,
+      "name": <policy name here>,
+      "type": "inline"
+    },
+    {
+      "arn": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+      "document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "logs:CreateLogGroup",
+              "logs:CreateLogStream",
+              "logs:PutLogEvents"
+            ],
+            "Resource": "*"
+          }
+        ]
+      },
+      "id": <id here>,
+      "name": <policy name here>,
+      "type": "managed"
+    }
+  ],
+  "resources": {
+    "s3": {
+      "service": {
+        "icon": <Icon here>,
+        "name": "Amazon S3"
+      },
+      "statements": [
+        {
+          "action": "s3:PutObject",
+          "effect": "Allow",
+          "resource": "arn:aws:s3:::<Bucket name here>/<Obeject name here>",
+          "service": "s3",
+          "source": {
+            "index": "VisualEditor0",
+            "policyName": <policy name here>,
+            "policyType": "inline"
+          }
+        },
+        {
+          "action": "s3:GetObject",
+          "effect": "Allow",
+          "resource": "arn:aws:s3:::<Bucket name here>/<Obeject name here>",
+          "service": "s3",
+          "source": {
+            "index": "VisualEditor0",
+            "policyName": <policy name here>,
+            "policyType": "inline"
+          }
+        }
+      ]
+    },
+    "secretsmanager": {
+      "service": {
+        "icon": <Icon here>,
+        "name": "AWS Secrets Manager"
+      },
+      "statements": [
+        {
+          "action": "secretsmanager:GetSecretValue",
+          "effect": "Allow",
+          "resource": "arn:aws:secretsmanager:<Secret ARN here>",
+          "service": "secretsmanager",
+          "source": {
+            "index": "VisualEditor0",
+            "policyName": <policy name here>,
+            "policyType": "inline"
+          }
+        }
+      ]
+    },
+    "logs": {
+      "service": {
+        "icon": <Icon here>,
+        "name": <policy name here>
+      },
+      "statements": [
+        {
+          "action": "logs:CreateLogGroup",
+          "effect": "Allow",
+          "resource": "*",
+          "service": "logs",
+          "source": {
+            "index": "0",
+            "policyName": <policy name here>,
+            "policyType": "managed"
+          }
+        },
+        {
+          "action": "logs:CreateLogStream",
+          "effect": "Allow",
+          "resource": "*",
+          "service": "logs",
+          "source": {
+            "index": "0",
+            "policyName": <policy name here>,
+            "policyType": "managed"
+          }
+        },
+        {
+          "action": "logs:PutLogEvents",
+          "effect": "Allow",
+          "resource": "*",
+          "service": "logs",
+          "source": {
+            "index": "0",
+            "policyName": <policy name here>,
+            "policyType": "managed"
+          }
+        }
+      ]
+    }
+  },
+  "roleName": <role name here>,
+  "trustedEntities": [
+    "lambda.amazonaws.com"
+  ]
+}
