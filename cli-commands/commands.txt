@@ -1,0 +1,14 @@
+#Build your image
+docker build -t <name of container here> <path to folder>
+
+#This command will produce an access_key
+aws ecr get-login-password --region <AWS Region Here>
+
+aws ecr --region <AWS Region Here> | docker login -u AWS -p <acess_key from above command> <ECR Repo URI>
+
+#To find Image-ID
+docker images 
+
+#tag and push your image to ECR
+docker tag <Image-ID> <ECR Repo URI>
+docker push <ECR Repo URI>
