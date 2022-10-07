@@ -1,7 +1,5 @@
-
 def Initiating_Browser():
-    global driver
-    
+
     #Set Options for 
     load_dotenv()
     start_time = time.time()
@@ -24,4 +22,6 @@ def Initiating_Browser():
     driver = webdriver.Chrome("/opt/chromedriver", chrome_options=chrome_options)
 
     # Open the website
-    driver.get('https://analyser.moneyfacts.co.uk/forms/frmLogin.aspx')
+    driver.get(<your URL here>)
+    
+    return driver
